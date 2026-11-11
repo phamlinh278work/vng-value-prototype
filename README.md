@@ -4,8 +4,6 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 
 **Mở bản thử:** https://phamlinh278work.github.io/vng-value-prototype/
 
-**Bản thử giao diện mới (2 màn: danh sách và chi tiết hợp đồng):** https://phamlinh278work.github.io/vng-value-prototype/ban-moi/
-
 Đây là bản bấm chuyển màn để góp ý thiết kế, chưa phải phần mềm thật:
 
 - Ô nhập chưa gõ được, bấm Lưu luôn đi theo nhánh thành công.
