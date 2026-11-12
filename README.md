@@ -16,12 +16,12 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 1. **Đăng nhập** → bấm Đăng nhập → Chọn đơn vị → Tiếp tục → **Trang chủ "Việc của tôi"**.
 2. **Trang chủ:** bấm một việc trong danh sách để mở đúng màn xử lý. Bấm nhãn vai trò cạnh lời chào để xem trang chủ của vai trò khác (Giám đốc kinh doanh, Chuyên viên thẩm định, Kiểm soát viên, Admin). Nút "Tùy chỉnh" để bật/tắt các khối.
 3. **Hợp đồng:** Thêm hợp đồng → bấm ô Khách hàng để mở hộp chọn → Lưu hợp đồng → Duyệt hợp đồng → xác nhận.
-4. **Giao việc:** trên hợp đồng đã duyệt, mở tab Giao việc → Phân công chuyên viên → Phân công.
+4. **Giao việc:** trên hợp đồng đã duyệt, mở tab Giao việc → Phân công → chọn người lập và thẩm định viên chịu trách nhiệm (bấm ô thẩm định viên để xem danh sách chọn) → Phân công.
 5. **Định giá:** menu Tài sản thẩm định → Thêm tài sản → tab Tài sản so sánh → Chọn tài sản so sánh → Mở bảng tính so sánh → Xem thông báo sơ bộ → Lưu vào hồ sơ.
 6. **Chứng thư:** Tạo chứng thư → Xác nhận chứng thư → Chấm chứng thư → Lưu kết quả chấm → Cập nhật phát hành → Lưu.
 7. **Bàn giao hồ sơ:** menu Chứng thư → tab Bàn giao hồ sơ → Bàn giao hồ sơ → Bàn giao → Duyệt bàn giao.
 8. **Tra cứu QR:** ở chứng thư đã chấm đạt bấm In chứng thư, rồi bấm vào ô mã QR trên trang xem trước.
-9. **Cài đặt:** menu Cài đặt → Quy trình hợp đồng (bước thực hiện, tình trạng hợp đồng, tình trạng chứng thư), Người dùng, Phân quyền.
+9. **Cài đặt:** menu Cài đặt → Quy trình hợp đồng (bước thực hiện, tình trạng hợp đồng, tình trạng chứng thư), Người dùng và phân quyền (kèm quy tắc tách nhiệm), Thẩm định viên (điều kiện hành nghề), Ủy quyền ký.
 10. **Kế toán (đề xuất):** menu Kế toán → các tab Công nợ, Hoa hồng, Đề nghị thanh toán, Quỹ, Báo cáo.
 11. **Tính năng đề xuất:** nút "Tính năng đề xuất" ở Trang chủ mở các màn cho luồng đang chờ VNG xác nhận.
 
