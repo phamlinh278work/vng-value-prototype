@@ -21,7 +21,11 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 6. **Chứng thư:** Tạo chứng thư → Xác nhận chứng thư → Chấm chứng thư → Lưu kết quả chấm → Cập nhật phát hành → Lưu.
 7. **Bàn giao hồ sơ:** menu Chứng thư → tab Bàn giao hồ sơ → Bàn giao hồ sơ → Bàn giao → Duyệt bàn giao.
 8. **Tra cứu QR:** ở chứng thư đã chấm đạt bấm In chứng thư, rồi bấm vào ô mã QR trên trang xem trước.
-9. **Cài đặt:** menu Cài đặt → Quy trình hợp đồng: bước thực hiện, tình trạng hợp đồng, tình trạng chứng thư.
+9. **Cài đặt:** menu Cài đặt → Quy trình hợp đồng (bước thực hiện, tình trạng hợp đồng, tình trạng chứng thư), Người dùng, Phân quyền.
+10. **Kế toán (đề xuất):** menu Kế toán → các tab Công nợ, Hoa hồng, Đề nghị thanh toán, Quỹ, Báo cáo.
+11. **Tính năng đề xuất:** nút "Tính năng đề xuất" ở Trang chủ mở các màn cho luồng đang chờ VNG xác nhận.
+
+Ngoài ra đã có: chi tiết khách hàng, chi tiết lịch hẹn, chi tiết tài sản so sánh, bảng thông báo, tìm kiếm, menu tài khoản, và các trạng thái danh sách trống, lỗi khi lưu.
 
 Menu bên trái bấm được ở mọi màn; nút cạnh logo thu gọn menu còn cột biểu tượng. Mỗi màn chi tiết có dòng "‹ Danh sách …" ở đầu để quay lại.
 
@@ -33,10 +37,10 @@ Thanh dưới có 5 mục: Việc của tôi, Hợp đồng, Quét QR, Thông b�
 
 ## Chưa có trong bản này
 
-- Công nợ, quỹ, hoa hồng, đề nghị thanh toán, nhân viên, phân quyền.
-- Nút "Lưu thay đổi" ở màn Cài đặt chưa có hiệu lực: bản thử chỉ minh họa giao diện.
+- Nhóm Kế toán và các màn gắn nhãn "Đề xuất" là phương án chưa được VNG xác nhận; số liệu và quy tắc trên đó (ví dụ bậc hoa hồng) chỉ để minh họa.
+- Nút "Xuất Excel", "Lưu thay đổi" ở Cài đặt chưa có hiệu lực.
+- Bảng thông báo, menu tài khoản hiện giữa màn và chưa đóng khi bấm ra ngoài.
 - Bản đồ vị trí tài sản, trợ lý AI, ký số.
-- Các tình huống lỗi khi lưu và danh sách trống (đã thiết kế, chưa nối vào bản bấm thử).
 
 ## Trong repo
 
