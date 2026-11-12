@@ -9,7 +9,7 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 - Ô nhập chưa gõ được, bấm Lưu luôn đi theo nhánh thành công.
 - Toàn bộ dữ liệu trên màn hình là dữ liệu giả lập.
 - Nút nào chưa có màn đích sẽ hiện ghi chú "chưa có trong demo".
-- Phóng to để xem chi tiết: nút + ở góc phải dưới, phím Ctrl (Cmd) +, hoặc Ctrl + lăn chuột / chụm hai ngón trên touchpad. Nút − hoặc Ctrl − / Ctrl 0 để về lại cỡ ban đầu (không thu nhỏ hơn cỡ ban đầu).
+- Phóng to để xem chi tiết: đặt chuột vào chỗ muốn xem rồi giữ Ctrl (Mac: Cmd hoặc Ctrl) và lăn chuột, hoặc chụm hai ngón trên touchpad; chỗ đó phóng to tại chỗ. Khi đã phóng to, giữ chuột kéo để di chuyển màn. Nút − / % / + ở góc phải dưới và Ctrl + / − / 0 cũng dùng được; thu nhỏ chỉ về lại cỡ ban đầu.
 
 ## Kịch bản thử chuỗi chính
 

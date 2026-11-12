@@ -83577,10 +83577,13 @@ function baseScale(sec){
   var s=size(sec),W=window.innerWidth,H=window.innerHeight;
   if(fit==="none")return 1;
   if(fit==="width")return W/s.w;
+  if(s.w>=1000)return 0.8*W/s.w;
   return Math.min(W/s.w,H/s.h);
 }
 function scaleOf(sec){return baseScale(sec)*ZOOM;}
-function rwScroll(sec){var s=size(sec),k=scaleOf(sec);return s.h*k>window.innerHeight+1||s.w*k>window.innerWidth+1;}
+// Khi phóng to vẫn giữ lề như cỡ mặc định, để điểm nào cũng đưa được về dưới con trỏ.
+function rwGeo(sec){var s=size(sec),W=window.innerWidth,H=window.innerHeight,k0=baseScale(sec),k=k0*ZOOM,mx=Math.max(0,(W-s.w*k0)/2),my=Math.max(0,(H-s.h*k0)/2),TW=s.w*k+2*mx,TH=s.h*k+2*my;return{s:s,W:W,H:H,k:k,mx:mx,my:my,TW:TW,TH:TH,ox:TW>W+1,oy:TH>H+1};}
+function rwScroll(sec){var g=rwGeo(sec);return g.ox||g.oy;}
 function place(sec,k,x,y){sec.style.transform="translate("+x+"px,"+y+"px) scale("+k+")";}
 // App kind: a phone screen opened on a wide window sits in a phone, at its
 // own size; anything else fills the window. Nothing is scaled.
@@ -83608,11 +83611,11 @@ function layout(){
     overlays.forEach(function(o){positionOverlay(o);});
     return;
   }
-  var sec=el(current),k=scaleOf(sec),s=size(sec),sc=rwScroll(sec);
+  var sec=el(current),g=rwGeo(sec),k=g.k,s=g.s,sc=g.ox||g.oy;
   document.body.classList.toggle("rw-scroll-page",sc);
-  stage.style.height=sc?Math.ceil(s.h*k)+"px":"";
-  stage.style.width=sc&&s.w*k>window.innerWidth?Math.ceil(s.w*k)+"px":"";
-  place(sec,k,Math.max(0,(window.innerWidth-s.w*k)/2),sc?0:Math.max(0,(window.innerHeight-s.h*k)/2));
+  stage.style.height=sc?Math.ceil(g.oy?g.TH:g.H)+"px":"";
+  stage.style.width=sc&&g.ox?Math.ceil(g.TW)+"px":"";
+  place(sec,k,g.ox?g.mx:Math.max(0,(g.W-s.w*k)/2),g.oy?g.my:Math.max(0,(g.H-s.h*k)/2));
   if(window.rwZoomLabel)window.rwZoomLabel();
   overlays.forEach(function(o){positionOverlay(o);});
 }
@@ -84475,24 +84478,47 @@ if(bar){
   hint.addEventListener("click",function(){var s=el(current);s.classList.toggle("rw-hint");});
   bar.appendChild(restart);bar.appendChild(pick);bar.appendChild(hint);
   var mk=function(t,ti,f){var b=document.createElement("button");b.textContent=t;b.title=ti;b.addEventListener("click",f);bar.appendChild(b);return b;};
-  var setZoom=function(z){ZOOM=Math.max(1,Math.min(4,Math.round(z*100)/100));layout();if(ZOOM===1)window.scrollTo(0,0);};
+  // Phóng quanh điểm (fx,fy): điểm nội dung đang nằm dưới đó giữ nguyên vị trí sau khi phóng.
+  var setZoom=function(z,fx,fy){
+    var sec=el(current);if(!sec)return;
+    if(fx==null){fx=window.innerWidth/2;fy=window.innerHeight/2;}
+    var r0=sec.getBoundingClientRect(),k0=scaleOf(sec),u=(fx-r0.left)/k0,v=(fy-r0.top)/k0;
+    ZOOM=Math.max(1,Math.min(4,Math.round(z*100)/100));layout();
+    if(ZOOM===1){window.scrollTo(0,0);return;}
+    var r1=sec.getBoundingClientRect(),k1=scaleOf(sec);
+    window.scrollBy(r1.left+u*k1-fx,r1.top+v*k1-fy);
+  };
   window.rwSetZoom=setZoom;
-  mk("\u2212","Về gần cỡ cũ (Ctrl −)",function(){setZoom(ZOOM/1.2);});
-  var zl=mk("100%","Về cỡ cũ (Ctrl 0)",function(){setZoom(1);});
-  mk("+","Phóng to (Ctrl +)",function(){setZoom(ZOOM*1.2);});
-  window.rwZoomLabel=function(){zl.textContent=Math.round(ZOOM*100)+"%";};
+  mk("\u2212","Về gần cỡ mặc định (Ctrl −)",function(){setZoom(ZOOM/1.25);});
+  var zl=mk("100%","Về cỡ mặc định (Ctrl 0)",function(){setZoom(1);});
+  mk("+","Phóng to (Ctrl +, hoặc Ctrl + lăn chuột tại chỗ muốn xem)",function(){setZoom(ZOOM*1.25);});
+  window.rwZoomLabel=function(){zl.textContent=Math.round(ZOOM*100)+"%";document.body.classList.toggle("rw-zoomed",ZOOM>1);};
   bar.style.opacity="0.85";
+  var st=document.createElement("style");st.textContent="body.rw-zoomed #rw-stage{cursor:grab}body.rw-zoomed.rw-panning,body.rw-zoomed.rw-panning *{cursor:grabbing!important;user-select:none!important}";document.head.appendChild(st);
 }
 document.addEventListener("keydown",function(e){
   if(!(e.ctrlKey||e.metaKey)||!window.rwSetZoom)return;
-  if(e.key==="+"||e.key==="="){e.preventDefault();window.rwSetZoom(ZOOM*1.2);}
-  else if(e.key==="-"||e.key==="_"){e.preventDefault();window.rwSetZoom(ZOOM/1.2);}
+  if(e.key==="+"||e.key==="="){e.preventDefault();window.rwSetZoom(ZOOM*1.25);}
+  else if(e.key==="-"||e.key==="_"){e.preventDefault();window.rwSetZoom(ZOOM/1.25);}
   else if(e.key==="0"){e.preventDefault();window.rwSetZoom(1);}
 },true);
 window.addEventListener("wheel",function(e){
   if(!e.ctrlKey||!window.rwSetZoom)return;
-  e.preventDefault();window.rwSetZoom(ZOOM*Math.exp(-e.deltaY*0.01));
+  e.preventDefault();window.rwSetZoom(ZOOM*Math.exp(-e.deltaY*0.01),e.clientX,e.clientY);
 },{passive:false});
+// Kéo để di chuyển khi đã phóng to; kéo xong không tính là bấm nút.
+var rwDrag=null,rwDragged=false;
+document.addEventListener("mousedown",function(e){
+  if(ZOOM<=1||e.button!==0||(e.target.closest&&e.target.closest("#rw-bar")))return;
+  rwDrag={x:e.clientX,y:e.clientY,sx:window.scrollX,sy:window.scrollY};rwDragged=false;
+},true);
+document.addEventListener("mousemove",function(e){
+  if(!rwDrag)return;var dx=e.clientX-rwDrag.x,dy=e.clientY-rwDrag.y;
+  if(!rwDragged&&Math.abs(dx)+Math.abs(dy)>6){rwDragged=true;document.body.classList.add("rw-panning");}
+  if(rwDragged){e.preventDefault();window.scrollTo(rwDrag.sx-dx,rwDrag.sy-dy);}
+},true);
+document.addEventListener("mouseup",function(){if(rwDrag){rwDrag=null;document.body.classList.remove("rw-panning");}},true);
+document.addEventListener("click",function(e){if(rwDragged){e.stopPropagation();e.preventDefault();rwDragged=false;}},true);
 var first=fromHash();
 show(first||byFigma[D.start],null,true);
 history.replaceState(null,"",hashOf(current));
