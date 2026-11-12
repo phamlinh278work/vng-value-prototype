@@ -27,7 +27,7 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 12. **Báo cáo:** Quản trị, Cơ sở dữ liệu giá, Xuất hồ sơ kiểm tra, Gửi Bộ Tài chính.
 13. **Kế toán và Tính năng đề xuất:** các màn gắn nhãn "Đề xuất" là phương án chưa được VNG xác nhận.
 
-Menu bên trái bấm được ở mọi màn; nút cạnh logo thu gọn menu còn cột biểu tượng. Mỗi màn chi tiết có dòng "‹ Danh sách …" ở đầu để quay lại.
+Góc trái dưới mỗi màn ghi người đang thao tác (kinh doanh, chuyên viên, kiểm soát viên, thẩm định viên, kế toán, văn thư…), vì mỗi bước do một vai trò làm. Menu bên trái bấm được ở mọi màn; nút cạnh logo thu gọn menu còn cột biểu tượng. Mỗi màn chi tiết có dòng "‹ Danh sách …" ở đầu để quay lại.
 
 ## Mobile app
 
