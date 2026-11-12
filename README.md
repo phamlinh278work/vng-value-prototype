@@ -9,7 +9,7 @@ Bản bấm thử giao diện và luồng nghiệp vụ của phần mềm quả
 - Ô nhập chưa gõ được, bấm Lưu luôn đi theo nhánh thành công.
 - Toàn bộ dữ liệu trên màn hình là dữ liệu giả lập.
 - Nút nào chưa có màn đích sẽ hiện ghi chú "chưa có trong demo".
-- Màn máy tính mặc định vừa chiều ngang, cuộn xuống để xem hết. Phóng to / thu nhỏ bằng nút − % + ở góc phải dưới, phím Ctrl (Cmd) + / − / 0, hoặc Ctrl + lăn chuột / chụm hai ngón trên touchpad. Nút "Cả màn" / "Vừa ngang" đổi kiểu vừa màn.
+- Phóng to để xem chi tiết: nút + ở góc phải dưới, phím Ctrl (Cmd) +, hoặc Ctrl + lăn chuột / chụm hai ngón trên touchpad. Nút − hoặc Ctrl − / Ctrl 0 để về lại cỡ ban đầu (không thu nhỏ hơn cỡ ban đầu).
 
 ## Kịch bản thử chuỗi chính
 
